@@ -29,27 +29,32 @@ contactForm.addEventListener('submit', async (e) => {
     };
 
     try {
-        // Connected to Render Backend!
-        const BACKEND_URL = 'https://portfolio-project100.onrender.com';
+        // Direct Database Connection using Supabase REST API
+        const SUPABASE_URL = 'https://grqyndcnsgxywbvmszml.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdycXluZGNuc2d4eXdidm1zem1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMTg2NjgsImV4cCI6MjA4OTg5NDY2OH0.NWyhdNgVQSuRqQHRKKEUH6XdBtr9rrjF54MMCrsrQ0Q';
         
-        // Send data to our backend API natively built on Node.js
-        const response = await fetch(`${BACKEND_URL}/api/contact`, {
+        // Send data directly to Supabase table "contacts"
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=minimal'
             },
             body: JSON.stringify(formData)
         });
 
-        if (response.ok) {
+        if (response.ok || response.status === 201) {
             formStatus.textContent = 'Message sent successfully!';
             formStatus.classList.add('success');
             contactForm.reset();
         } else {
-            throw new Error('Failed to send message');
+            const errorText = await response.text();
+            throw new Error(errorText || 'Failed to send message');
         }
     } catch (error) {
-        formStatus.textContent = 'Oops! Could not connect to the Backend. Make sure your server is running.';
+        formStatus.textContent = 'Oops! Could not save to database. Ensure the "contacts" table exists in Supabase.';
         formStatus.classList.add('error');
         console.error('Error submitting form:', error);
     } finally {
