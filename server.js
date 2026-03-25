@@ -15,14 +15,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Database connection logic for Render PostgreSQL
-// Make sure to add this connection string in your Render environment variables as DATABASE_URL
-// Wait for incoming requests to connect
-console.log('⌛ Waiting to establish a connection with the Render PostgreSQL Database...');
+// Database connection logic for Supabase PostgreSQL
+// Ensure your Render environment variable (SUPABASE_URL or DATABASE_URL)
+// contains the Supabase PostgreSQL connection string (starts with postgresql://)
+console.log('⌛ Waiting to establish a connection with the Supabase PostgreSQL Database...');
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    // Render requires SSL for external database connections outside their internal network
+    connectionString: process.env.SUPABASE_URL || process.env.DATABASE_URL,
+    // Supabase requires SSL for external database connections
     ssl: {
         rejectUnauthorized: false
     }
@@ -40,14 +40,14 @@ const initializeDB = async () => {
         );
     `;
     try {
-        if(process.env.DATABASE_URL) {
+        if(process.env.SUPABASE_URL || process.env.DATABASE_URL) {
             await pool.query(createTableQuery);
-            console.log('✅ Connected to Render PostgreSQL and ensured contacts table exists!');
+            console.log('✅ Connected to Supabase PostgreSQL and ensured contacts table exists!');
         } else {
-            console.log('⚠️ No DATABASE_URL found. Please set your Render Database URL in the environment variables first.');
+            console.log('⚠️ No SUPABASE_URL found. Please set your Supabase Connection String in the environment variables first.');
         }
     } catch (error) {
-        console.error('❌ Database connection or table creation failed. Check your DATABASE_URL from Render or IP access lists.');
+        console.error('❌ Database connection or table creation failed. Check your SUPABASE_URL connection string from Supabase.');
         console.error('Error details:', error.message);
     }
 };
@@ -84,7 +84,7 @@ app.post('/api/contact', async (req, res) => {
 
 // A basic check to see if server is active
 app.get('/', (req, res) => {
-    res.send('Portfolio Backend is running! Ready to accept Render PostgreSQL Connections.');
+    res.send('Portfolio Backend is running! Ready to accept Supabase PostgreSQL Connections.');
 });
 
 // Start the app listening to standard port
