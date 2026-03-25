@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotsna Jijo | Portfolio</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob-bg">
+        <div class="blob shape1"></div>
+        <div class="blob shape2"></div>
+        <div class="blob shape3"></div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="logo">Jyotsna.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="greeting">Hi! I'm <span class="highlight">Jyotsna</span></h1>
+                <h2 class="subtitle">Welcome to my portfolio</h2>
+                <a href="#about" class="btn btn-primary">Discover More</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content box-glass">
+                    <p>
+                        I am a highly motivated and passionate developer currently pursuing my studies at Kristu Jayanti (deemed to be university). I have a profound interest in both front-end and back-end development, constantly exploring new technologies to build intuitive and robust web applications. My journey in tech is driven by an insatiable curiosity and a desire to solve complex real-world problems through elegant code. Whether I'm designing dynamic user interfaces or engineering robust backend architectures, I strive to deliver high-quality, impactful digital experiences.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content box-glass">
+                            <h3>Kristu Jayanti (Deemed to be University)</h3>
+                            <span class="date">2025 - 2028</span>
+                            <p>Currently pursuing my higher education, diving deep into computer science, programming, and modern software engineering practices.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content box-glass">
+                            <h3>Chavara Public School</h3>
+                            <span class="date">2023 - 2025</span>
+                            <p>Completed higher secondary education with a strong foundation in core academic subjects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card box-glass">
+                        <i class="fab fa-python skill-icon"></i>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="skill-card box-glass">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3>Web Development</h3>
+                        <p class="skill-desc">Front & Backend</p>
+                    </div>
+                    <div class="skill-card box-glass">
+                        <i class="fas fa-microchip skill-icon"></i>
+                        <h3>C Programming</h3>
+                    </div>
+                    <div class="skill-card box-glass">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h3>SQL</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="contact-wrapper box-glass">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Hello! I'd like to chat about..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                        <p id="form-status" class="form-status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Jyotsna Jijo. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
