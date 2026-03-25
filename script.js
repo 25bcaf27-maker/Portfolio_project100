@@ -29,8 +29,12 @@ contactForm.addEventListener('submit', async (e) => {
     };
 
     try {
+        // ⚠️ IMPORTANT: Replace 'http://localhost:5000' with your actual Render backend URL!
+        // Example: 'https://your-backend-name.onrender.com'
+        const BACKEND_URL = 'http://localhost:5000'; // <-- Change this before pushing to GitHub
+        
         // Send data to our backend API natively built on Node.js
-        const response = await fetch('http://localhost:5000/api/contact', {
+        const response = await fetch(`${BACKEND_URL}/api/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
